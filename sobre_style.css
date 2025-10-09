@@ -1,0 +1,132 @@
+/* Paleta quente e leve */
+:root{
+  --bg:#f8f3ee;           /* creme suave de fundo */
+  --paper:#fffaf6;        /* papel claro para blocos */
+  --ink:#2a2623;          /* texto principal */
+  --muted:#6d645d;        /* texto secundário */
+  --brand:#8B5E34;        /* tom amadeirado */
+  --line:#eadfd6;         /* linha delicada */
+  --shadow:0 10px 30px rgba(45,35,30,.08);
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:var(--ink);
+  background:linear-gradient(180deg,var(--bg),#fff);
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+/* Cabeçalho minimalista: só voltar e Whats */
+.top{
+  position:sticky; top:0; z-index:10;
+  background:rgba(248,243,238,.8);
+  backdrop-filter:saturate(140%) blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.top .wrap{
+  max-width:1000px; margin:auto; padding:.7rem .9rem;
+  display:flex; justify-content:space-between; align-items:center;
+}
+a.back{color:var(--ink); text-decoration:none; font-weight:600}
+a.whats{
+  background:var(--brand); color:#fff; text-decoration:none;
+  padding:.55rem .9rem; border-radius:999px; box-shadow:var(--shadow);
+}
+
+/* Seções com respiro */
+main{max-width:840px; margin:0 auto; padding:1.2rem .9rem 2.2rem}
+section{margin:1.6rem 0}
+
+/* Hero: tipografia orgânica */
+.hero h1{
+  font-family:"Playfair Display",Georgia,serif;
+  font-weight:700;
+  font-size:clamp(2rem,4.8vw,3rem);
+  line-height:1.15;
+  margin:.4rem 0 .3rem;
+}
+.hero .sub{
+  color:var(--muted);
+  max-width:42ch;
+  margin:0;
+}
+
+/* Story: linha guia orgânica na esquerda */
+.story{
+  position:relative;
+  padding-left:1.2rem;
+}
+.story::before{
+  content:"";
+  position:absolute; left:0; top:.4rem; bottom:.4rem;
+  width:4px; border-radius:4px;
+  background:linear-gradient(180deg, var(--brand), transparent 70%);
+  opacity:.25;
+}
+.story .flow p{
+  margin:.9rem 0;
+  background:var(--paper);
+  padding:.9rem 1rem;
+  border-radius:14px;
+  box-shadow:var(--shadow);
+  border:1px solid var(--line);
+}
+.story .flow p strong{
+  font-weight:600; color:var(--brand);
+}
+
+/* Citação suave */
+.quote{
+  margin:1.2rem 0;
+  padding:1rem 1.2rem;
+  border-left:6px solid var(--brand);
+  background:#fff;
+  border-radius:10px;
+  box-shadow:var(--shadow);
+  font-style:italic;
+}
+
+/* Lista sem “cara de empresa” */
+.notes{
+  margin:1rem 0 0 1rem;
+  color:var(--ink);
+}
+.notes li{ margin:.4rem 0 }
+.notes li::marker{ color:var(--brand) }
+
+/* Vídeo com moldura arredondada */
+.video h2{
+  font-family:"Playfair Display",Georgia,serif;
+  font-size:clamp(1.4rem,3.4vw,2rem);
+  margin-bottom:.6rem;
+}
+.frame{
+  position:relative;
+  padding-top:56.25%;
+  border-radius:16px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  box-shadow:var(--shadow);
+  background:#000;
+}
+.frame iframe{ position:absolute; inset:0; width:100%; height:100%; border:0 }
+
+/* Rodapé */
+.foot{
+  text-align:center;
+  color:var(--muted);
+  padding:1.4rem .9rem 2rem;
+}
+
+/* Aparição suave ao rolar (sem exagero) */
+.reveal{ opacity:0; transform:translateY(12px); transition:opacity .6s ease, transform .6s ease }
+.reveal.show{ opacity:1; transform:translateY(0) }
+
+/* Acessibilidade: reduz animações para quem prefere menos movimento */
+@media (prefers-reduced-motion: reduce){
+  .reveal{ opacity:1; transform:none; transition:none }
+}
