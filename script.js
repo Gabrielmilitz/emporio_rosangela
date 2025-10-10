@@ -64,3 +64,12 @@ if (window.L && document.getElementById('map')) {
   }).addTo(map);
   L.marker([-29.6794167, -53.5826389]).addTo(map).bindPopup('Bolo no Portão').openPopup();
 }
+
+// Testa todas as <img> da página e marca as que falham
+document.querySelectorAll('img').forEach(img => {
+  img.addEventListener('error', () => {
+    console.warn('Imagem não carregou:', img.getAttribute('src'));
+    img.classList.add('broken');
+    img.alt = (img.alt || 'imagem') + ' (não carregada)';
+  });
+});

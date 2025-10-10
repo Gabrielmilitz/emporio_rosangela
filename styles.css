@@ -164,10 +164,16 @@ body {
   overflow: hidden;
   border-radius: 14px;
   box-shadow: 0 10px 35px rgba(0,0,0,.4);
+
+  /* Altura consistente em todas as telas */
+  aspect-ratio: 4 / 3;
+  background: #1f2a22; /* fallback enquanto carrega */
 }
 .photo img {
-  width: 100%; height: 100%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  display: block;
   transition: transform 3s ease, filter 1.2s ease;
   filter: brightness(0.95) saturate(1.15);
 }
@@ -191,6 +197,7 @@ body {
 
 @media (max-width: 600px) {
   .gallery { padding: 2rem 3% 2.2rem; gap: .7rem; }
+  .photo { aspect-ratio: 1 / 1; } /* cards quadrados no celular */
   .photo span { font-size: .9rem; padding: .7rem; }
 }
 
@@ -255,4 +262,17 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   .fadein { transition: none; transform: none; opacity: 1; }
   .photo img { transition: none; }
+}
+
+/* Evita layout quebrar quando a imagem não carrega */
+.hero-bg, .main-logo {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Placeholder quando a imagem falhar */
+img.broken {
+  background: repeating-linear-gradient(45deg, #444, #444 10px, #555 10px, #555 20px);
+  min-height: 160px;
 }
