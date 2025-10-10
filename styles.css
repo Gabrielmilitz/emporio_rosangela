@@ -277,29 +277,27 @@ img.broken {
   min-height: 160px;
 }
 
-/* ===== Correção do espaçamento no mobile (grudar a galeria) ===== */
-@media (max-width: 600px) {
-  /* se quiser, dá uma encurtada no respiro da logo também */
-  .logo-area { padding-bottom: .5rem; }
-
-  /* cola a galeria no que vem antes */
-  .gallery {
-    padding-top: 1rem;   /* antes era 4rem */
-    padding-left: 3%;
-    padding-right: 3%;
-    padding-bottom: 2rem; /* mantém um respiro embaixo */
-    gap: 6px;            /* imagens mais juntinhas */
-    margin-top: -.4rem;  /* puxa levemente pra cima */
+/* ===== Corrigir vácuo abaixo do HERO no mobile ===== */
+@supports (height: 100svh) {
+  .hero {
+    /* em celulares, use a altura visível real */
+    height: 85svh;           /* antes: 90vh / 100dvh */
   }
-
-  /* borda mais suave nas miniaturas, opcional */
-  .photo { border-radius: 10px; }
-
-  /* se estiver usando aspect-ratio, mantém o corte bonito */
-  /* .photo { aspect-ratio: 4 / 3; }  <-- opcional */
 }
 
-/* (garantia) imagens como bloco, sem “respiro” inesperado */
-.photo img, .hero-bg, .main-logo {
-  display: block;
+/* fallback se o browser não suportar svh */
+@media (max-width: 600px) {
+  .hero {
+    height: 85vh;            /* menos agressivo que 100vh */
+  }
+
+  /* cola a próxima seção no hero (seja .gallery ou .quote) */
+  .hero + .gallery,
+  .hero + .quote {
+    margin-top: 0;
+    padding-top: 0.8rem;     /* ajuste fino de respiro */
+  }
+
+  /* se ainda sobrar espaço, puxe um tiquinho pra cima */
+  .gallery { margin-top: -0.4rem; }
 }
