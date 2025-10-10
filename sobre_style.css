@@ -1,4 +1,4 @@
-/* Paleta quente e leve */
+/* Paleta quente e leve (padrão do projeto) */
 :root{
   --bg:#f8f3ee;           /* creme suave de fundo */
   --paper:#fffaf6;        /* papel claro para blocos */
@@ -20,10 +20,10 @@ body{
   text-rendering:optimizeLegibility;
 }
 
-/* Cabeçalho minimalista: só voltar e Whats */
+/* Cabeçalho minimalista: voltar + reserva (Whats) */
 .top{
   position:sticky; top:0; z-index:10;
-  background:rgba(248,243,238,.8);
+  background:rgba(248,243,238,.86);
   backdrop-filter:saturate(140%) blur(8px);
   border-bottom:1px solid var(--line);
 }
@@ -32,23 +32,33 @@ body{
   display:flex; justify-content:space-between; align-items:center;
 }
 a.back{color:var(--ink); text-decoration:none; font-weight:600}
-a.whats{
+a.whats,.btn{
   background:var(--brand); color:#fff; text-decoration:none;
   padding:.55rem .9rem; border-radius:999px; box-shadow:var(--shadow);
+  font-weight:600; display:inline-block; border:0;
 }
+a.whats:hover,.btn:hover{filter:brightness(1.05)}
+
+/* (Opcional) Faixa de logo no topo do Sobre */
+.logo-area{
+  max-width:1000px; margin:0 auto; padding:1rem .9rem 0;
+  display:flex; justify-content:center; align-items:center;
+}
+.main-logo{ max-width:160px; filter:drop-shadow(0 6px 14px rgba(0,0,0,.08)) }
 
 /* Seções com respiro */
 main{max-width:840px; margin:0 auto; padding:1.2rem .9rem 2.2rem}
 section{margin:1.6rem 0}
 
-/* Hero: tipografia orgânica */
-.hero h1{
+/* Títulos no estilo do projeto */
+h1,h2{
   font-family:"Playfair Display",Georgia,serif;
-  font-weight:700;
-  font-size:clamp(2rem,4.8vw,3rem);
-  line-height:1.15;
-  margin:.4rem 0 .3rem;
+  line-height:1.15; margin:0 0 .8rem;
 }
+h1{font-weight:700; font-size:clamp(2rem,4.8vw,3rem)}
+h2{font-weight:700; font-size:clamp(1.4rem,3.4vw,2rem)}
+
+/* Hero: tipografia orgânica */
 .hero .sub{
   color:var(--muted);
   max-width:42ch;
@@ -70,7 +80,7 @@ section{margin:1.6rem 0}
 .story .flow p{
   margin:.9rem 0;
   background:var(--paper);
-  padding:.9rem 1rem;
+  padding:.95rem 1rem;
   border-radius:14px;
   box-shadow:var(--shadow);
   border:1px solid var(--line);
@@ -88,6 +98,7 @@ section{margin:1.6rem 0}
   border-radius:10px;
   box-shadow:var(--shadow);
   font-style:italic;
+  color:var(--ink);
 }
 
 /* Lista sem “cara de empresa” */
@@ -98,12 +109,8 @@ section{margin:1.6rem 0}
 .notes li{ margin:.4rem 0 }
 .notes li::marker{ color:var(--brand) }
 
-/* Vídeo com moldura arredondada */
-.video h2{
-  font-family:"Playfair Display",Georgia,serif;
-  font-size:clamp(1.4rem,3.4vw,2rem);
-  margin-bottom:.6rem;
-}
+/* Vídeo com moldura arredondada (responsivo) */
+.video h2{ margin-bottom:.6rem }
 .frame{
   position:relative;
   padding-top:56.25%;
@@ -126,7 +133,38 @@ section{margin:1.6rem 0}
 .reveal{ opacity:0; transform:translateY(12px); transition:opacity .6s ease, transform .6s ease }
 .reveal.show{ opacity:1; transform:translateY(0) }
 
-/* Acessibilidade: reduz animações para quem prefere menos movimento */
+/* Acessibilidade: reduz animações */
 @media (prefers-reduced-motion: reduce){
   .reveal{ opacity:1; transform:none; transition:none }
+}
+
+/* Pequenos ajustes mobile */
+@media (max-width:520px){
+  .top .wrap{ padding:.65rem .8rem }
+  .main-logo{ max-width:140px }
+}
+
+/* Galeria de imagens na seção .video (sem o padding do vídeo) */
+.video .frame{
+  padding: 0 !important;      /* remove o espaço gigante */
+  position: static;           /* volta ao fluxo normal */
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  display: grid;
+  gap: .9rem;
+}
+
+/* Estilo das imagens da galeria */
+.gallery-img{
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--line);
+  object-fit: cover;
+  transition: transform .3s ease, filter .3s ease;
+}
+.gallery-img:hover{
+  transform: scale(1.02);
+  filter: brightness(1.05);
 }

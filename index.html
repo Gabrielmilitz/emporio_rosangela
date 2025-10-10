@@ -5,108 +5,109 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Bolo no Portão • Café Colonial</title>
 
-  <!-- Fonte leve -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-  <!-- Leaflet (mapa) -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-
+  <!-- Styles & Script -->
   <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
 </head>
+
 <body>
-  <header class="topbar">
-    <div class="container row">
-      <div class="logo">🍰 Bolo no Portão</div>
-      <nav class="menu">
+  <!-- Cabeçalho -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo-text">Bolo no Portão</a>
+
+      <!-- Botão Menu Mobile -->
+      <button
+        class="menu-btn"
+        aria-label="Abrir menu"
+        aria-controls="primary-nav"
+        aria-expanded="false"
+      >
+        <!-- Ícone hambúrguer -->
+        <svg class="icon-burger" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
+          <path fill="currentColor" d="M3 6h18v2H3V6Zm0 5h18v2H3v-2Zm0 5h18v2H3v-2Z"/>
+        </svg>
+        <!-- Ícone fechar -->
+        <svg class="icon-close" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
+          <path fill="currentColor" d="M18.3 5.71 12 12.01l-6.3-6.3-1.4 1.41 6.29 6.29-6.3 6.3 1.42 1.41 6.29-6.29 6.3 6.3 1.41-1.41-6.29-6.3 6.29-6.29-1.41-1.41z"/>
+        </svg>
+      </button>
+
+      <nav class="nav" id="primary-nav">
         <a href="sobre.html">Sobre</a>
-        <a href="#produtos">Produtos</a>
-        <a href="#comentarios">Comentários</a>
-        <a href="#fotos">Fotos</a>
-        <a href="#localizacao">Localização</a>
-        <a class="btn" href="https://wa.me/55XXXXXXXXXXX?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20uma%20reserva%20no%20Bolo%20no%20Port%C3%A3o." target="_blank" rel="noopener">Reservar no WhatsApp</a>
+        <a href="#reviews">Avaliações</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#contato">Contato</a>
+
+        <!-- Instagram -->
+        <a class="ig" href="https://www.instagram.com/bolonoportao/" target="_blank" rel="noopener" aria-label="Instagram do Bolo no Portão">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+            <path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 2 .3 2.5.6.6.3 1 .7 1.5 1.2.5.5.9.9 1.2 1.5.3.5.5 1.3.6 2.5.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 2-.6 2.5-.3.6-.7 1-1.2 1.5-.5.5-.9.9-1.5 1.2-.5.3-1.3.5-2.5.6-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-2-.3-2.5-.6a4.7 4.7 0 0 1-1.5-1.2 4.7 4.7 0 0 1-1.2-1.5c-.3-.5-.5-1.3-.6-2.5C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-2 .6-2.5.3-.6.7-1 1.2-1.5.5-.5.9-.9 1.5-1.2.5-.3 1.3-.5 2.5-.6C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.8.4-1.2.8-.3.3-.6.7-.8 1.2-.2.4-.3 1-.4 2.1-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1.1.2 1.7.4 2.1.2.5.4.8.8 1.2.3.3.7.6 1.2.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.8-.4 1.2-.8.3-.3.6-.7.8-1.2.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.8-.8-1.2a3 3 0 0 0-1.2-.8c-.4-.2-1-.3-2.1-.4-1.2-.1-1.6-.1-4.7-.1Zm0 3.4a6.4 6.4 0 1 1 0 12.8 6.4 6.4 0 0 1 0-12.8Zm0 1.8a4.6 4.6 0 1 0 0 9.2 4.6 4.6 0 0 0 0-9.2Zm5-2.1a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/>
+          </svg>
+        </a>
       </nav>
     </div>
   </header>
 
-  <main class="container">
-    <!-- Hero simples -->
-    <section id="inicio" class="hero">
+  <!-- LOGO CENTRAL -->
+  <section class="logo-area fadein">
+    <img src="img/logo.png" alt="Logo Bolo no Portão" class="main-logo">
+  </section>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero fadein">
+      <img src="img/doce2.jpeg" alt="Mesa de café colonial artesanal" class="hero-bg" />
       <div class="hero-text">
-        <h1>Café colonial com clima de casa</h1>
-        <p>Delícias artesanais, café passado na hora e um espaço aconchegante para a família e os amigos.</p>
-        <a class="btn" href="https://wa.me/55XXXXXXXXXXX?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20uma%20reserva%20no%20Bolo%20no%20Port%C3%A3o." target="_blank" rel="noopener">Reservar pelo Whats</a>
-      </div>
-      <img class="hero-img" src="https://images.unsplash.com/photo-1514517604290-3d16b4d28b16?q=80&w=1400&auto=format&fit=crop" alt="Mesa com bolos e pães frescos">
-    </section>
-
-    <!-- Produtos (sem preço) -->
-    <section id="produtos">
-      <h2>Nossas delícias</h2>
-      <div class="grid">
-        <figure class="card">
-          <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=1200&auto=format&fit=crop" alt="Bolo de cenoura">
-          <figcaption>Bolo de Cenoura</figcaption>
-        </figure>
-        <figure class="card">
-          <img src="https://images.unsplash.com/photo-1562440499-64c9a111f713?q=80&w=1200&auto=format&fit=crop" alt="Pães artesanais">
-          <figcaption>Pães Artesanais</figcaption>
-        </figure>
-        <figure class="card">
-          <img src="https://images.unsplash.com/photo-1515543237350-b3eea1ec8082?q=80&w=1200&auto=format&fit=crop" alt="Tábua colonial">
-          <figcaption>Tábua Colonial</figcaption>
-        </figure>
-        <figure class="card">
-          <img src="https://images.unsplash.com/photo-1497534446932-c925b458314e?q=80&w=1200&auto=format&fit=crop" alt="Quiche">
-          <figcaption>Quiche</figcaption>
-        </figure>
-        <figure class="card">
-          <img src="https://images.unsplash.com/photo-1533139502658-0198f920d8ae?q=80&w=1200&auto=format&fit=crop" alt="Cuca de banana">
-          <figcaption>Cuca de Banana</figcaption>
-        </figure>
-        <figure class="card">
-          <img src="https://images.unsplash.com/photo-1505577058444-a3dab90d4253?q=80&w=1200&auto=format&fit=crop" alt="Café coado">
-          <figcaption>Café Coado</figcaption>
-        </figure>
+        <h1>Café colonial com<br><span>alma e aroma de casa</span></h1>
+        <p>Entre o verde e o aroma do café, cada fatia é uma lembrança do campo e da infância.</p>
+        <a class="btn" href="https://wa.me/555596829387?text=Olá!%20Gostaria%20de%20fazer%20uma%20reserva%20no%20Bolo%20no%20Portão." target="_blank" rel="noopener">Fazer reserva</a>
       </div>
     </section>
 
-    <!-- Comentários -->
-    <section id="comentarios">
-      <h2>O que dizem por aqui</h2>
-      <div class="quotes">
-        <blockquote>“Ambiente acolhedor e bolos incríveis.” <span>— Ana</span></blockquote>
-        <blockquote>“Tudo fresquinho, lembrança da casa da vó.” <span>— Carlos</span></blockquote>
-        <blockquote>“Lugar perfeito pra um café da tarde.” <span>— Juliana</span></blockquote>
-      </div>
+    <!-- GALERIA -->
+    <section id="galeria" class="gallery fadein">
+      <div class="photo"><img src="img/doce2.jpeg" alt="Bolo de morango artesanal"><span>Bolo de morango artesanal</span></div>
+      <div class="photo"><img src="img/mesa.png" alt="Mesa colonial posta"><span>Mesa colonial posta</span></div>
+      <div class="photo"><img src="img/salgado2.jpeg" alt="Salgados dourados"><span>Salgados dourados</span></div>
+      <div class="photo"><img src="img/doce4.jpeg" alt="Café e bolos ao pôr do sol"><span>Café e bolos ao pôr do sol</span></div>
+      <div class="photo"><img src="img/doce1.png" alt="Pudim artesanal"><span>Pudim artesanal</span></div>
+      <div class="photo"><img src="img/maionese.jpeg" alt="Prato feito na casa"><span>Prato feito na casa</span></div>
+      <div class="photo"><img src="img/doce3.jpeg" alt="Prato feito na casa"><span>Prato feito na casa</span></div>
+      <div class="photo"><img src="img/ultimodoce.jpeg" alt="Prato feito na casa"><span>Prato feito na casa</span></div>
+      <div class="photo"><img src="img/final1.jpeg" alt="Prato feito na casa"><span>Prato feito na casa</span></div>
+      <div class="photo"><img src="img/final2.jpeg" alt="Prato feito na casa"><span>Prato feito na casa</span></div>
     </section>
 
-    <!-- Fotos do local -->
-    <section id="fotos">
-      <h2>Fotos do local</h2>
-      <div class="grid">
-        <img class="thumb" src="https://images.unsplash.com/photo-1542442828-2872292b31c7?q=80&w=1200&auto=format&fit=crop" alt="Salão rústico">
-        <img class="thumb" src="https://images.unsplash.com/photo-1528924972590-2ee75ef73d2f?q=80&w=1200&auto=format&fit=crop" alt="Jardim externo">
-        <img class="thumb" src="https://images.unsplash.com/photo-1483695028939-5bb13f8648b0?q=80&w=1200&auto=format&fit=crop" alt="Café sendo coado">
-      </div>
-      <div id="lightbox" class="lightbox"><img alt="ampliada"></div>
+    <!-- FRASE -->
+    <section class="quote fadein">
+      <blockquote>
+        “Você cria suas memórias um pedacinho por vez.”
+      </blockquote>
     </section>
 
-    <!-- Localização -->
-    <section id="localizacao">
+    <!-- LOCALIZAÇÃO -->
+    <section id="contato" class="fadein">
       <h2>Localização</h2>
-      <div id="map"></div>
-      <p class="hint">📍 29°40'45.9" S • 53°34'57.5" W</p>
-      <p>
-        <a class="btn" href="https://wa.me/55XXXXXXXXXXX?text=Ol%C3%A1!%20Quero%20fazer%20uma%20reserva%20e%20tirar%20d%C3%BAvidas%20sobre%20como%20chegar." target="_blank" rel="noopener">Falar no Whats</a>
-      </p>
+      <div class="map-container">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!4v1760108416662!6m8!1m7!1sx8A-k8MRlm9C5KRlbtkT1w!2m2!1d-29.68978604451229!2d-53.59904571295547!3f0!4f0!5f0.7820865974627469"
+          width="100%" height="400"
+          style="border:0; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,.4);"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Mapa da localização Bolo no Portão">
+        </iframe>
+      </div>
+
+      <a class="btn" href="https://wa.me/555596829387?text=Olá!%20Quero%20fazer%20uma%20reserva%20e%20tirar%20dúvidas%20sobre%20como%20chegar." target="_blank" rel="noopener">Falar no WhatsApp</a>
     </section>
   </main>
 
-  <footer>
-    © <span id="year"></span> Bolo no Portão
-  </footer>
-
-  <script src="script.js"></script>
+  <footer>© <span id="year"></span> Bolo no Portão</footer>
 </body>
 </html>
