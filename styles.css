@@ -276,3 +276,30 @@ img.broken {
   background: repeating-linear-gradient(45deg, #444, #444 10px, #555 10px, #555 20px);
   min-height: 160px;
 }
+
+/* ===== Correção do espaçamento no mobile (grudar a galeria) ===== */
+@media (max-width: 600px) {
+  /* se quiser, dá uma encurtada no respiro da logo também */
+  .logo-area { padding-bottom: .5rem; }
+
+  /* cola a galeria no que vem antes */
+  .gallery {
+    padding-top: 1rem;   /* antes era 4rem */
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-bottom: 2rem; /* mantém um respiro embaixo */
+    gap: 6px;            /* imagens mais juntinhas */
+    margin-top: -.4rem;  /* puxa levemente pra cima */
+  }
+
+  /* borda mais suave nas miniaturas, opcional */
+  .photo { border-radius: 10px; }
+
+  /* se estiver usando aspect-ratio, mantém o corte bonito */
+  /* .photo { aspect-ratio: 4 / 3; }  <-- opcional */
+}
+
+/* (garantia) imagens como bloco, sem “respiro” inesperado */
+.photo img, .hero-bg, .main-logo {
+  display: block;
+}
