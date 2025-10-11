@@ -1,6 +1,6 @@
 /* Paleta quente e leve (padrão do projeto) */
 :root{
-  --bg:#f8f3ee;           /* creme suave de fundo */
+  --bg:#ccb7a2;           /* creme suave de fundo */
   --paper:#fffaf6;        /* papel claro para blocos */
   --ink:#2a2623;          /* texto principal */
   --muted:#6d645d;        /* texto secundário */
@@ -89,7 +89,7 @@ h2{font-weight:700; font-size:clamp(1.4rem,3.4vw,2rem)}
   font-weight:600; color:var(--brand);
 }
 
-/* Citação suave */
+
 .quote{
   margin:1.2rem 0;
   padding:1rem 1.2rem;
@@ -101,7 +101,7 @@ h2{font-weight:700; font-size:clamp(1.4rem,3.4vw,2rem)}
   color:var(--ink);
 }
 
-/* Lista sem “cara de empresa” */
+
 .notes{
   margin:1rem 0 0 1rem;
   color:var(--ink);
@@ -109,7 +109,7 @@ h2{font-weight:700; font-size:clamp(1.4rem,3.4vw,2rem)}
 .notes li{ margin:.4rem 0 }
 .notes li::marker{ color:var(--brand) }
 
-/* Vídeo com moldura arredondada (responsivo) */
+
 .video h2{ margin-bottom:.6rem }
 .frame{
   position:relative;
@@ -133,21 +133,21 @@ h2{font-weight:700; font-size:clamp(1.4rem,3.4vw,2rem)}
 .reveal{ opacity:0; transform:translateY(12px); transition:opacity .6s ease, transform .6s ease }
 .reveal.show{ opacity:1; transform:translateY(0) }
 
-/* Acessibilidade: reduz animações */
+
 @media (prefers-reduced-motion: reduce){
   .reveal{ opacity:1; transform:none; transition:none }
 }
 
-/* Pequenos ajustes mobile */
+
 @media (max-width:520px){
   .top .wrap{ padding:.65rem .8rem }
   .main-logo{ max-width:140px }
 }
 
-/* Galeria de imagens na seção .video (sem o padding do vídeo) */
+
 .video .frame{
-  padding: 0 !important;      /* remove o espaço gigante */
-  position: static;           /* volta ao fluxo normal */
+  padding: 0 !important;     
+  position: static;           
   background: transparent;
   border: 0;
   box-shadow: none;
@@ -155,7 +155,7 @@ h2{font-weight:700; font-size:clamp(1.4rem,3.4vw,2rem)}
   gap: .9rem;
 }
 
-/* Estilo das imagens da galeria */
+
 .gallery-img{
   width: 100%;
   border-radius: 16px;
