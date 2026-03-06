@@ -1,13 +1,27 @@
-// ano no rodapé
-const y = document.getElementById('year');
-if (y) y.textContent = new Date().getFullYear();
+const year = document.getElementById("year");
 
-// revelar seções suavemente quando entram na tela
+if(year){
+year.textContent = new Date().getFullYear();
+}
+
 const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-if (!prefersReduced && 'IntersectionObserver' in window) {
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
-  }, { threshold: 0.12 });
 
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+if(!prefersReduced && "IntersectionObserver" in window){
+
+const observer = new IntersectionObserver((entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}
+
+});
+
+},{threshold:0.12});
+
+document.querySelectorAll(".reveal").forEach(el=>{
+observer.observe(el);
+});
+
 }

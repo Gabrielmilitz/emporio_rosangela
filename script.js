@@ -1,64 +1,130 @@
-// ano
-document.getElementById('year').textContent = new Date().getFullYear();
+// ANO AUTOMÁTICO
 
-// animações suaves ao rolar
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
-}, { threshold: 0.2 });
-document.querySelectorAll('.fadein').forEach(el => observer.observe(el));
+const year = document.getElementById("year");
 
-// ===== Menu Mobile =====
-const menuBtn = document.querySelector('.menu-btn');
-const nav = document.getElementById('primary-nav');
-
-function closeMenu(){
-  nav.classList.remove('open');
-  document.body.classList.remove('noscroll');
-  if(menuBtn){
-    menuBtn.setAttribute('aria-expanded','false');
-    menuBtn.setAttribute('aria-label','Abrir menu');
-    menuBtn.querySelector('.icon-burger').style.display = '';
-    menuBtn.querySelector('.icon-close').style.display = 'none';
-  }
+if(year){
+year.textContent = new Date().getFullYear();
 }
-function openMenu(){
-  nav.classList.add('open');
-  document.body.classList.add('noscroll');
-  if(menuBtn){
-    menuBtn.setAttribute('aria-expanded','true');
-    menuBtn.setAttribute('aria-label','Fechar menu');
-    menuBtn.querySelector('.icon-burger').style.display = 'none';
-    menuBtn.querySelector('.icon-close').style.display = '';
-  }
+
+
+// FADE AO ROLAR
+
+const fadeElements = document.querySelectorAll(".fadein");
+
+if ("IntersectionObserver" in window){
+
+const observer = new IntersectionObserver((entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+entry.target.classList.add("show");
 }
-menuBtn?.addEventListener('click', ()=>{
-  const isOpen = nav.classList.contains('open');
-  isOpen ? closeMenu() : openMenu();
-});
-nav?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-document.addEventListener('click', (e)=>{
-  if(!nav || !menuBtn) return;
-  const inside = nav.contains(e.target) || menuBtn.contains(e.target);
-  if(!inside && nav.classList.contains('open')) closeMenu();
-});
-document.addEventListener('keydown', (e)=>{
-  if(e.key==='Escape' && nav.classList.contains('open')) closeMenu();
+
 });
 
-// ===== Debug opcional: marca imagens quebradas =====
-document.querySelectorAll('img').forEach(img=>{
-  img.addEventListener('error', ()=>{
-    console.warn('Imagem não carregou:', img.getAttribute('src'));
-    img.style.background='repeating-linear-gradient(45deg,#444,#444 10px,#555 10px,#555 20px)';
-    img.style.minHeight='160px';
-  });
+},{threshold:0.2});
+
+fadeElements.forEach(el=>observer.observe(el));
+
+}
+
+
+// MENU MOBILE
+
+const menuBtn = document.querySelector(".menu-btn");
+const nav = document.getElementById("primary-nav");
+
+if(menuBtn){
+
+menuBtn.addEventListener("click",()=>{
+
+nav.classList.toggle("open");
+
 });
 
-// ===== Leaflet opcional (você usa iframe) =====
-if (window.L && document.getElementById('map')) {
-  const map = L.map('map', { scrollWheelZoom: false }).setView([-29.6794167, -53.5826389], 15);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19, attribution: '&copy; OpenStreetMap'
-  }).addTo(map);
-  L.marker([-29.6794167, -53.5826389]).addTo(map).bindPopup('Bolo no Portão').openPopup();
 }
+
+
+// HERO SLIDER
+
+const slider = document.querySelector(".hero-slider");
+
+if(slider){
+
+const images = [
+
+"img/doce2.jpeg",
+"img/mesa.png",
+"img/salgado2.jpeg",
+"img/doce4.jpeg",
+"img/doce1.png",
+"img/maionese.jpeg",
+"img/doce3.jpeg",
+"img/ultimodoce.jpeg",
+"img/final1.jpeg",
+"img/final2.jpeg",
+"img/salgado.jpeg",
+"img/mesas.png"
+
+];
+
+let current = 0;
+
+function changeSlide(){
+
+slider.classList.remove("active");
+
+setTimeout(()=>{
+
+slider.style.backgroundImage = `url(${images[current]})`;
+
+slider.classList.add("active");
+
+current++;
+
+if(current >= images.length){
+current = 0;
+}
+
+},400);
+
+}
+
+changeSlide();
+
+setInterval(changeSlide,5000);
+
+}
+
+/* LIGHTBOX GALERIA */
+
+const galleryImages = document.querySelectorAll(".gallery img");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.querySelector(".lightbox-img");
+const closeLightbox = document.querySelector(".lightbox-close");
+
+galleryImages.forEach(img => {
+
+img.addEventListener("click", ()=>{
+
+lightbox.classList.add("show");
+lightboxImg.src = img.src;
+
+});
+
+});
+
+closeLightbox.addEventListener("click", ()=>{
+
+lightbox.classList.remove("show");
+
+});
+
+lightbox.addEventListener("click",(e)=>{
+
+if(e.target === lightbox){
+lightbox.classList.remove("show");
+}
+
+});
